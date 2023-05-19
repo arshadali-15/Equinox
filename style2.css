@@ -1,0 +1,156 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #acc6d1;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .admin{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    margin : 10px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #3480bf;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+
+  nav{
+    border-radius: 25%;
+  }
+  
+  nav ul {
+    margin: 10px;
+    padding: 0;
+    border-radius: 25%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    display: block;
+    padding: 10px;
+  }
+  
+  nav a:hover {
+    background-color: #acc6d1;
+    border-radius: 10px;
+    font-size: large;
+
+  }
+  
+  /* Main styles */
+  main {
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #d8f2f1;
+    color: #201d1d;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.8s ease;
+    
+  }
+  
+  .button:hover {
+    background-color: #5babf6;
+    border-radius: 25%;  
+  
+    transition-duration : 2s;
+    transition: delay 3px; 
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #ac7a7a;
+  }
+  
+  td img {
+    max-width: 250px;
+    height: auto;
+  }
+  
+  td a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  td a:hover {
+    color: #5babf6;
+  }

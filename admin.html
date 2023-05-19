@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style1.css" />
+  <title>ADD BOOKS</title>
+  <style>
+    h1 {
+      position: relative;
+      top: 13%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid rgb(79, 77, 77);
+      padding: 2px;
+      background-color: rgb(79, 77, 77);
+      color: aliceblue;
+    }
+
+    form {
+      top: 30%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label {
+      font-weight: bold;
+      display: inline-block;
+      width: 150px;
+      margin-right: 10px;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="file"] {
+      width: 500px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    form input[type="submit"] {
+      width: 120px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="admin.html">Add Book</a></li>
+        <li><a href="stock.php">Update Stock</a></li>
+        <li><a href="delete_order.php">Orders</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form name="myForm" action="add.php" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+    <center>
+      <h1>Upload Book Details</h1>
+    </center>
+
+    <label>Image:</label>
+    <input type="file" name="book_img" accept="image/*" id="file" required />
+
+    <label>Enter book name:</label><br>
+    <input type="text" name="book_name" required />
+
+    <label>Author name:</label><br>
+    <input type="text" name="author_name" required />
+
+    <label>Publication:</label><br>
+    <input type="text" name="publication" required />
+
+    <label>Edition:</label><br>
+    <input type="number" name="edition" min="0" required />
+
+    <label>ISBN Number:</label><br>
+    <input type="number" name="isbn" min="0" required />
+
+    <label>Price:</label><br>
+
+    <input type="number" name="price" min="0" step=".01" required />
+
+    <label>Stock:</label><br>
+    <input type="number" name="stock" min="0" required />
+
+    <center>
+      <br />
+      <input type="submit" name="submit_btn" value="Upload Book" class="button" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" name="reset_btn" value="Reset" class="button" />
+    </center>
+  </form>
+  <br><br><br><br><br><br><br><br><br><br>
+
+  <script>
+    function validateForm() {
+      let bookname = document.forms["myForm"]["book_name"].value;
+      if (bookname == "") {
+        alert("Book title must be filled out");
+        return false;
+      } else if (/^\d/.test(bookname)) {
+        alert("Book Name should not contain a number");
+        return false;
+      }
+      let authorname = document.forms["myForm"]["author_name"].value;
+      if (authorname == "") {
+        alert("Author name must be filled out");
+        return false;
+      } else if (/^\d/.test(authorname)) {
+        alert("Author name should not contain a number");
+        return false;
+      }
+      let publ = document.forms["myForm"]["publication"].value;
+      if (publ == "") {
+        alert("Publication title must be filled out");
+        return false;
+      }
+      let edin = document.forms["myForm"]["edition"].value;
+      if (edin > 2023) {
+        alert("Edition year must be valid ");
+        return false;
+      } else if (edin == "") {
+        alert(" Edition must be filled out");
+        return false;
+      }
+
+      let isbnnum = document.forms["myForm"]["isbn"].value;
+      if (isbnnum == "") {
+        alert("ISBN number must be filled out");
+        return false;
+      } else if (isbnnum.length < 13 || isbnnum.length > 13) {
+        alert("ISBN number should have 13 digits only");
+        return false;
+      } else if (isbnnum.indexof(".") != -1) {
+        alert("ISBN number must not have a decimal");
+        return false;
+      }
+      let priceamt = document.forms["myForm"]["price"].value;
+      if (priceamt == "") {
+        alert("Price must be filled out");
+        return false;
+      }
+      let stockk = document.forms["myForm"]["stock"].value;
+      if (stockk == "") {
+        alert("Stock details must be filled out");
+        return false;
+      }
+      var inputElement = document.getElementById("file");
+      var files = inputElement.value;
+      var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      if (!allowedExtensions.exec(files)) {
+        alert("Invalid File Type.");
+        return false;
+      }
+    }
+  </script>
+
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  <footer>
+    <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

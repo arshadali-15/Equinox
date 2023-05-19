@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<input lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Login</title>
+    <style>
+        h1 {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(79, 77, 77);
+            padding: 1px;
+            background-color: rgb(79, 77, 77);
+            color: aliceblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.php">Catalog</a></li>
+                <li><a href="login.html">Admin Log-in</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form name="Login" method="post" action="authenticate.php" onsubmit="return validate()">
+        <h1>
+            <center>Login</center>
+        </h1>
+        <label>Enter username:</label> <input type="text" name="username" placeholder="username"><br><br>
+
+        <label>Enter password:</label> <input type="password" name="password" placeholder="password"><br><br><br>
+
+        <input type="submit" value="Log-in"
+            class="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="button">
+
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><br><br><br><br><br><br><br><br>
+
+    <footer>
+        <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
+    </footer>
+    <a href="register.html"><button name="register">Register</button></a>
+    <script>
+        function validate() {
+            var id = document.Login.username.value
+            var ps = document.Login.password.value;
+            if (id.length == "" && ps.length == "") {
+                alert("User Name and Password fields are empty");
+                return false;
+            }
+            else {
+                if (id.length == "") {
+                    alert("Username field is empty");
+                    return false;
+                }
+                if (ps.length == "") {
+                    alert("Password field is empty");
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

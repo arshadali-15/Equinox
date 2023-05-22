@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<input lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Register Account</title>
+    <style>
+        h1 {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(79, 77, 77);
+            padding: 1px;
+            background-color: rgb(79, 77, 77);
+            color: aliceblue;
+        }
+
+        form {
+            top: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="number"],
+        form input[type="file"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 300px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="registered.php" method="post">
+        <h1>
+            <center>Register</center>
+        </h1>
+        <label>Username:<br><br> </label><input type="text" name="username" placeholder="Username" required><br>
+
+        <label>Create Password:<br><br> </label><input type="password" min="8" placeholder="Password" name="password"
+            required><br>
+
+        <label>Confirm Password:<br><br> </label><input type="password" placeholder="Confirm Password" min="8"
+            required><br>
+
+        <label>Full Name :<br><br> </label><input type="text" name="name" placeholder="Full Name" required><br>
+
+
+        <label>E-mail:<br><br> </label><input type="email" name="email" placeholder="E-mail" required><br>
+
+
+        <label>Mobile Number:<br><br></label><input type="tel" pattern="[0-9]{10}" maxlength="10" minlength="10"
+            name="mobile" placeholder="Mobile Number" required><br>
+
+
+        <label>Address:<br><br> </label><input type="text" name="address" placeholder="Address" required><br>
+
+
+        <label>City:<br><br> </label><input type="text" name="city" placeholder="City" required><br>
+
+        <input type="submit" value="Confirm"><br><br>
+
+    </form>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
+    </footer>
+</body>
+<html>

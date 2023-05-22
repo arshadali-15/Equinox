@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<input lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Login</title>
+    <style>
+        h1 {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(79, 77, 77);
+            padding: 1px;
+            background-color: rgb(79, 77, 77);
+            color: aliceblue;
+        }
+
+        form {
+            top: 45%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="number"],
+        form input[type="file"] {
+            width: 300px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <form name="Login" method="post" action="userauthenticate.php" onsubmit="return validate()">
+        <h1>
+            <center>User Login</center>
+        </h1>
+        <label>Enter username:</label><br> <input type="text" name="username" placeholder="username"><br>
+
+        <label>Enter password:</label><br> <input type="password" name="password" placeholder="password"><br>
+
+        <input type="submit" name="login" value="Login">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="button">&nbsp;&nbsp;&nbsp;;
+        <input type="button" onclick="location.href='register.html'" name="register" value="Register">
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><br><br><br><br><br><br><br><br>
+
+    <footer>
+        <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function validate() {
+            var id = document.Login.username.value
+            var ps = document.Login.password.value;
+            if (id.length == "" && ps.length == "") {
+                alert("User Name and Password fields are empty");
+                return false;
+            }
+            else {
+                if (id.length == "") {
+                    alert("Username field is empty");
+                    return false;
+                }
+                if (ps.length == "") {
+                    alert("Password field is empty");
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

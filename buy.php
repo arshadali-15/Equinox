@@ -53,14 +53,21 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.php">Catalog</a></li>
-        <li><a href="login.html">Admin Login</a></li>
+        <li><a href="catalog.php?user=<?php echo urlencode($_GET['user']); ?>">Catalog</a></li>
+        <li><a href="prevorders.php?user=<?php echo urlencode($_GET['user']); ?>">Order History</a></li>
       </ul>
     </nav>
   </header>
 
-  <form name="myForm" action="order.php" onsubmit="return buyvalidation()" method="post">
+  <?php include('connect.php');
+  $user = $_GET['user'];
+  $select = "SELECT * FROM users WHERE userkey = $user";
+  $result = mysqli_query($conn, $select);
+  $data = mysqli_fetch_assoc($result);
+  ?>
+
+
+  <form name="myForm" action="order.php?user=<?php echo urlencode($_GET['user']); ?>&isbn=<?php echo urlencode($_GET['isbn']); ?>" onsubmit="return buyvalidation()" method="post">
     <h1><b>
         <center>Checkout</center>
       </b></h1>
@@ -84,23 +91,23 @@
     ?>
     <input type="number" name="quantity" placeholder="Quantity" min="1" max="<?php echo $stock; ?>" id="quantity" required><br>
 
-    <label>Your Name:</label><br>
-    <input type="text" name="name" placeholder="Name" required><br>
-
-    <label>E-mail:</label><br>
-    <input type="email" name="email" placeholder="E-mail" required><br>
-
-    <label>Mobile Number:</label><br>
-    <input type="tel" pattern="[0-9]{10}" maxlength="10" minlength="10" name="mobile" placeholder="Mobile Number" required><br>
-
-    <label>Address:</label><br>
-    <input type="text" name="address" placeholder="Address" required><br>
-
-    <label>City:</label><br>
-    <input type="text" name="city" placeholder="City" required><br>
-
     <label>Final Price:</label><br>
     <input type="text" id="result" name="fprice" placeholder="Final Price" readonly><br>
+
+    <label>Your Name:</label><br>
+    <input type="text" name="name" placeholder="Name" value="<?php echo $data['u_name']; ?>" required><br>
+
+    <label>E-mail:</label><br>
+    <input type="email" name="email" placeholder="E-mail" value="<?php echo $data['email']; ?>" required><br>
+
+    <label>Mobile Number:</label><br>
+    <input type="tel" pattern="[0-9]{10}" maxlength="10" minlength="10" name="mobile" placeholder="Mobile Number" value="<?php echo $data['mobile']; ?>" required><br>
+
+    <label>Address:</label><br>
+    <input type="text" name="address" placeholder="Address" value="<?php echo $data['u_address']; ?>" required><br>
+
+    <label>City:</label><br>
+    <input type="text" name="city" placeholder="City" value="<?php echo $data['u_city']; ?>" required><br>
 
     <input type="submit" style="margin-left:30%;">
 

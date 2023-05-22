@@ -1,14 +1,7 @@
 <?php
 include("connect.php");
-
-if (isset($_GET['delete_order'])) {
-    $order_id = $_GET['delete_order'];
-    $del = "DELETE FROM customer WHERE order_id = $order_id";
-    mysqli_query($conn, $del);
-    header("Location: admin.html");
-}
-
-$query = "SELECT order_id, time, c_name, b_name, mobile_no, email, c_address, city,quantity,cost FROM customer";
+$user = $_GET['user'];
+$query = "SELECT order_id, time, c_name, b_name, mobile_no, email, c_address, city,quantity,cost FROM customer_backup";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -20,7 +13,7 @@ $result = mysqli_query($conn, $query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style1.css">
-    <title>Update Stock</title>
+    <title>Previous Orders</title>
 
 </head>
 
@@ -36,23 +29,23 @@ $result = mysqli_query($conn, $query);
         </nav>
     </header>
 
-    <br><br><br><br>
+    <br><br>
     <form class="no-style">
         <table border="5">
             <tr>
                 <thead>
                     <th> Order ID </th>
-                    <th> Customer Name </th>
+                    <th> Customer Name</th>
                     <th> Order Summary </th>
                     <th> Shipping Details</th>
-                    <th> Delete </th>
+                    <th> Order Status </th>
                 </thead>
             </tr>
             <tbody>
                 <?php if (mysqli_num_rows($result) > 0) {
                     while ($data = mysqli_fetch_assoc($result)) { ?>
                         <tr>
-                            <td> <b><?php echo $data['order_id']; ?></b></td>
+                            <td> <b>#BKO<?php echo $data['order_id']; ?></b></td>
 
                             <td> <b><?php echo $data['c_name']; ?> </b></td>
 
@@ -61,7 +54,15 @@ $result = mysqli_query($conn, $query);
                             <td><b>Mobile No.:</b> <?php echo $data['mobile_no']; ?><br> <b>E-mail:</b> <?php echo $data['email']; ?><br> <b>Address: </b> <?php echo $data['c_address']; ?><br><b> City: </b> <?php echo $data['city']; ?><br> </td>
 
                             <td>
-                                <form method="get" class="no-style" action="delete_order.php"><button type="submit" name="delete_order" value="<?php echo $data['order_id']; ?>">Order Delivered</button></form>
+                                <?php date_default_timezone_set("Asia/Calcutta");
+                                $curr_date = date('Y-m-d');
+                                $difference = strtotime($curr_date) - strtotime($data['time']);
+                                $dif = round($difference / 86400);
+                                if ($dif > 2) {
+                                    echo "<b> Order Delivered</b>";
+                                } else {
+                                    echo "<b> Order To Be Delivered</b>";
+                                }    ?>
                             </td>
                         </tr>
                     <?php
@@ -69,7 +70,7 @@ $result = mysqli_query($conn, $query);
                 } else { ?>
                     <tr>
                         <td colspan="5">
-                            <?php echo '<h1 align="center">No records found</h1>'; ?>
+                            <?php echo '<h1 align="center">No  Orders</h1>'; ?>
                         </td>
                     </tr>
                 <?php } ?>

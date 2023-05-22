@@ -19,9 +19,8 @@ $result = mysqli_query($conn, $query);
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.php">Catalog</a></li>
-                <li><a href="login.html">Admin Login</a></li>
+                <li><a href="catalog.php?user=<?php echo urlencode($_GET['user']); ?>">Catalog</a></li>
+                <li><a href="prevorders.php?user=<?php echo urlencode($_GET['user']); ?>">Order History</a></li>
             </ul>
         </nav>
     </header>
@@ -51,7 +50,7 @@ $result = mysqli_query($conn, $query);
 
                                 <td> <?php echo $data['stock']; ?></td>
 
-                                <td><input type="button" name="<?php echo $data['b_name']; ?>" value="BUY BOOK" onclick="location.href='buy.php?book=<?php echo urlencode($data['b_name']); ?>&price=<?php echo urlencode($data['price']); ?>&stock=<?php echo urlencode($data['stock']); ?>';"></td>
+                                <td><input type="button" name="<?php echo $data['b_name']; ?>" value="BUY BOOK" onclick="location.href='buy.php?book=<?php echo urlencode($data['b_name']); ?>&price=<?php echo urlencode($data['price']); ?>&stock=<?php echo urlencode($data['stock']); ?>&user=<?php echo urlencode($_GET['user']); ?>&isbn=<?php echo urlencode($data['ISBN']); ?>';"></td>
 
                             </tr>
                         <?php
@@ -69,8 +68,8 @@ $result = mysqli_query($conn, $query);
 
             </tr>
         </table>
-        </form>
-        <footer>
+    </form>
+    <footer>
         <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
     </footer>
 </body>

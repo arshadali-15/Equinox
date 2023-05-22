@@ -6,6 +6,7 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +14,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="style1.css">
     <title>Update Stock</title>
     <style>
-        h1{
+        h1 {
             position: relative;
             top: 13%;
             left: 50%;
@@ -31,8 +32,9 @@ $result = mysqli_query($conn, $query);
         <nav>
             <ul>
                 <li><a href="admin.html">Add Book</a></li>
-                <li><a href="stock.php">Update Stock</a></li>  
-                <li><a href="delete_order.php">Orders</a></li>                                         
+                <li><a href="stock.php">Update Stock</a></li>
+                <li><a href="delete_order.php">Current Orders</a></li>
+                <li><a href="all.php">All Orders </a></li>
             </ul>
         </nav>
     </header>

@@ -53,7 +53,7 @@
             </ul>
         </nav>
     </header>
-    <form action="registered.php" method="post">
+    <form name="myform" action="registered.php" method="post" onsubmit="return validation()">
         <h1>
             <center>Register</center>
         </h1>
@@ -63,7 +63,7 @@
             required><br>
 
         <label>Confirm Password:<br><br> </label><input type="password" placeholder="Confirm Password" min="8"
-            required><br>
+            name="cpassword" required><br>
 
         <label>Full Name :<br><br> </label><input type="text" name="name" placeholder="Full Name" required><br>
 
@@ -86,8 +86,62 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br>
+
     <footer>
         <p>&copy; 2023 Equinox Bookstore. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function validation() {
+            let emailAddress = document.forms["myform"]["email"].value;
+            var atSymbol = emailAddress.indexOf("@");
+            var dotSymbol = emailAddress.lastIndexOf(".");
+            var spaceSymbol = emailAddress.indexOf(" ");
+
+            if ((atSymbol == -1) ||
+                (atSymbol == 0) ||
+                (dotSymbol == -1) ||
+                (dotSymbol == 0) ||
+                (dotSymbol < atSymbol + 1) ||
+                (emailAddress.length < dotSymbol + 1) ||
+                (spaceSymbol != -1)) {
+                alert("Email address is not valid.");
+                return false;
+            }
+
+            let custname = document.forms["myform"]["name"].value;
+            if (custname == "") {
+                alert("Fill your name");
+                return false;
+            }
+            else if (/\d/.test(custname)) {
+                alert("Name should not contain numbers.");
+                return false;
+            }
+
+            let city = document.forms["myform"]["city"].value;
+            if (/\d/.test(city)) {
+                alert("City should not contain numbers.");
+                return false;
+            }
+
+            var firstpassword = document.myform.password.value;
+            var secondpassword = document.myform.cpassword.value;
+
+            if (firstpassword != secondpassword) {
+                alert("Passwords do not match")
+                return false;
+            }
+
+            let address = document.forms["myform"]["address"].value;
+            let pattern = /\D/;
+
+            if (!pattern.test(address)) {
+                alert("Address must not contain only numbers");
+                return false;
+            }
+            return true;
+        }    
+    </script>
 </body>
 <html>

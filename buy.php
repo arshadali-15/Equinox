@@ -55,6 +55,7 @@
       <ul>
         <li><a href="catalog.php?user=<?php echo urlencode($_GET['user']); ?>">Catalog</a></li>
         <li><a href="prevorders.php?user=<?php echo urlencode($_GET['user']); ?>">Order History</a></li>
+        <li><a href="index.html">Log-out</a></li>
       </ul>
     </nav>
   </header>
@@ -125,15 +126,13 @@
       var dotSymbol = emailAddress.lastIndexOf(".");
       var spaceSymbol = emailAddress.indexOf(" ");
 
-      if ((atSymbol != -1) &&
-        (atSymbol != 0) &&
-        (dotSymbol != -1) &&
-        (dotSymbol != 0) &&
-        (dotSymbol > atSymbol + 1) &&
-        (emailAddress.length > dotSymbol + 1) &&
-        (spaceSymbol == -1)) {
-        return true;
-      } else {
+      if ((atSymbol == -1) ||
+        (atSymbol == 0) ||
+        (dotSymbol == -1) ||
+        (dotSymbol == 0) ||
+        (dotSymbol < atSymbol + 1) ||
+        (emailAddress.length < dotSymbol + 1) ||
+        (spaceSymbol != -1)) {
         alert("Email address is not valid.");
         return false;
       }
@@ -142,6 +141,22 @@
       let custname = document.forms["myForm"]["name"].value;
       if (custname == "") {
         alert("Fill your name");
+        return false;
+      } else if (/\d/.test(custname)) {
+        alert("Name should not contain numbers.");
+        return false;
+      }
+
+      let city = document.forms["myForm"]["city"].value;
+      if (/\d/.test(city)) {
+        alert("City should not contain numbers.");
+        return false;
+      }
+
+      let address = document.forms["myForm"]["address"].value;
+      let pattern = /\D/;
+      if (!pattern.test(address)) {
+        alert("Address must not contain only numbers");
         return false;
       }
     }

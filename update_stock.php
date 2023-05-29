@@ -54,7 +54,6 @@
             <ul>
                 <li><a href="admin.html">Add Book</a></li>
                 <li><a href="stock.php">Update Stock</a></li>
-                <li><a href="delete_order.php">Current Orders</a></li>
                 <li><a href="all.php">All Orders </a></li>
             </ul>
         </nav>

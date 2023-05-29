@@ -1,7 +1,7 @@
 <?php
 include("connect.php");
 $user = $_GET['user'];
-$query = "SELECT order_id, time, c_name, b_name, mobile_no, email, c_address, city,quantity,cost FROM customer_backup WHERE userkey = $user";
+$query = "SELECT order_id, time, c_name, b_name, mobile_no, email, c_address, city,quantity,cost FROM customer_backup WHERE userkey = $user Order BY order_id DESC";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -23,6 +23,7 @@ $result = mysqli_query($conn, $query);
             <ul>
                 <li><a href="catalog.php?user=<?php echo urlencode($_GET['user']); ?>">Catalog</a></li>
                 <li><a href="prevorders.php?user=<?php echo urlencode($_GET['user']); ?>">Order History</a></li>
+                <li><a href="index.html">Log-out</a></li>
             </ul>
         </nav>
     </header>

@@ -1,6 +1,7 @@
 <?php
 include("connect.php");
 
+
 if (isset($_GET['delete_order'])) {
     $order_id = $_GET['delete_order'];
     $del = "DELETE FROM customer WHERE order_id = $order_id";
@@ -9,7 +10,19 @@ if (isset($_GET['delete_order'])) {
 }
 
 $query = "SELECT order_id, time, c_name, b_name, mobile_no, email, c_address, city,quantity,cost FROM customer";
+$result1 = mysqli_query($conn, $query);
+$data1 = mysqli_fetch_assoc($result1);
+date_default_timezone_set("Asia/Calcutta");
+$curr_date = date('Y-m-d');
+$difference = strtotime($curr_date) - strtotime($data['time']);
+$dif = round($difference / 86400);
+$order = $data['order_id'];
+if ($dif > 2) {
+    $delete = "DELETE FROM customer WHERE order_id = $order ";
+}
 $result = mysqli_query($conn, $query);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +63,11 @@ $result = mysqli_query($conn, $query);
             </tr>
             <tbody>
                 <?php if (mysqli_num_rows($result) > 0) {
-                    while ($data = mysqli_fetch_assoc($result)) { ?>
+                    while ($data = mysqli_fetch_assoc($result)) {
+
+                ?>
                         <tr>
-                            <td> <b><?php echo $data['order_id']; ?></b></td>
+                            <td> <b>#BKO<?php echo $data['order_id']; ?></b></td>
 
                             <td> <b><?php echo $data['c_name']; ?> </b></td>
 

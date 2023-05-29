@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $query);
             <ul>
                 <li><a href="catalog.php?user=<?php echo urlencode($_GET['user']); ?>">Catalog</a></li>
                 <li><a href="prevorders.php?user=<?php echo urlencode($_GET['user']); ?>">Order History</a></li>
+                <li><a href="index.html">Log-out</a></li>
             </ul>
         </nav>
     </header>
